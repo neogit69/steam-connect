@@ -28,7 +28,11 @@
         text-align: center;
         margin-top: 10%;
       }
-      h1 { font-size: 1.8rem; margin-bottom: 10px; color: #f44336; }
+      h1 {
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+        color: #f44336;
+      }
       a {
         display: inline-block;
         background-color: #f44336;
@@ -39,22 +43,34 @@
         font-size: 18px;
         transition: background 0.3s;
       }
-      a:hover { background-color: #c62828; }
-      img {
+      a:hover {
+        background-color: #c62828;
+      }
+      .banner-link img {
         max-width: 80%;
         border-radius: 12px;
         margin-bottom: 20px;
         box-shadow: 0 0 12px rgba(255,255,255,0.15);
+        cursor: pointer;
+        transition: transform 0.2s ease-in-out;
+      }
+      .banner-link img:hover {
+        transform: scale(1.02);
       }
     </style>
   </head>
   <body>
-    <img src="https://github.com/neogit69/steam-connect/blob/main/unes-banner.jpg?raw=true" alt="UNES Simracers AMS2 Banner">
+    <!-- 🔗 Imagen clicable -->
+    <a class="banner-link" href="steam://run/1066890//-connect 84.120.189.122:27105">
+      <img src="https://github.com/neogit69/steam-connect/blob/main/unes-banner.jpg?raw=true" alt="UNES Simracers AMS2 Banner">
+    </a>
+
     <h1>🏎️ UNES Simracers</h1>
     <p>Si no se abre automáticamente, haz clic abajo 👇</p>
     <a href="steam://run/1066890//-connect 84.120.189.122:27105">Conectar al servidor</a>
   </body>
 </html>
+
 
 
 
