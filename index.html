@@ -7,7 +7,7 @@
     <!-- ===== Open Graph (Discord / redes) ===== -->
     <meta property="og:title" content="🐱 UNES Simracers | Conecta al servidor AMS2">
     <meta property="og:description" content="Accede directamente al servidor de Automobilista 2. Elige modo monitor o VR. 🏎️">
-    <meta property="og:image" content="https://github.com/neogit69/steam-connect/unes-banner-small.jpg?raw=true">
+    <meta property="og:image" content="https://neogit69.github.io/steam-connect/unes-banner-small.jpg">
     <meta property="og:url" content="https://neogit69.github.io/steam-connect/">
     <meta property="og:type" content="website">
 
@@ -15,7 +15,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="UNES Simracers | Conectar al servidor AMS2">
     <meta name="twitter:description" content="Accede al servidor de Automobilista 2. Modo normal o VR disponibles.">
-    <meta name="twitter:image" content="https://github.com/neogit69/steam-connect/unes-banner-small.jpg?raw=true">
+    <meta name="twitter:image" content="https://neogit69.github.io/steam-connect/unes-banner-small.jpg">
 
     <!-- 🔁 Redirección automática (modo monitor por defecto) -->
     <meta http-equiv="refresh" content="2; url=steam://run/1066890//-connect 84.120.189.122:27105">
@@ -26,57 +26,86 @@
         background-color: #0d0d0d;
         color: #eee;
         text-align: center;
-        margin-top: 8%;
+        margin-top: 5%;
       }
+
       h1 {
         font-size: 1.8rem;
         color: #f44336;
         margin-bottom: 0.5rem;
       }
+
       p {
         color: #bbb;
-        margin-bottom: 1.2rem;
+        margin-bottom: 1rem;
       }
-      a.btn {
+
+      .banner-container {
+        position: relative;
         display: inline-block;
-        background-color: #f44336;
-        color: white;
-        padding: 12px 24px;
-        border-radius: 8px;
-        text-decoration: none;
-        font-size: 18px;
-        margin: 6px;
-        transition: background 0.3s;
+        width: 80%;
+        max-width: 600px;
       }
-      a.btn:hover {
-        background-color: #c62828;
-      }
-      .banner-link img {
-        max-width: 60%;
-        border-radius: 12px;
-        margin-bottom: 20px;
+
+      .banner-container img {
+        width: 100%;
+        border-radius: 14px;
         box-shadow: 0 0 12px rgba(255,255,255,0.15);
-        cursor: pointer;
         transition: transform 0.2s ease-in-out;
       }
-      .banner-link img:hover {
-        transform: scale(1.03);
+
+      .banner-container img:hover {
+        transform: scale(1.02);
+      }
+
+      .button-group {
+        position: absolute;
+        bottom: 12%;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 12px;
+      }
+
+      .btn {
+        background-color: rgba(244, 67, 54, 0.95);
+        color: white;
+        padding: 10px 20px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 16px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+        transition: background 0.3s, transform 0.2s;
+      }
+
+      .btn:hover {
+        background-color: #c62828;
+        transform: scale(1.05);
+      }
+
+      footer {
+        font-size: 0.9rem;
+        color: #999;
+        margin-top: 20px;
       }
     </style>
   </head>
+
   <body>
-    <!-- 🔗 Banner clicable -->
-    <a class="banner-link" href="steam://run/1066890//-connect 84.120.189.122:27105">
-      <img src="https://github.com/neogit69/steam-connect/unes-banner-small.jpg?raw=true" alt="UNES Simracers AMS2 Banner">
-    </a>
-
     <h1>🏁 UNES Simracers</h1>
-    <p>Selecciona tu modo de conexión:</p>
+    <p>Selecciona tu modo de conexión directamente desde el banner:</p>
 
-    <!-- 🔘 Enlaces de acceso -->
-    <a class="btn" href="steam://run/1066890//-connect 84.120.189.122:27105">Modo Monitor</a>
-    <a class="btn" href="steam://run/1066890//-connect 84.120.189.122:27105 -forcevr">Modo VR (Gafas)</a>
+    <!-- 🔗 Banner con botones integrados -->
+    <div class="banner-container">
+      <img src="unes-banner-small.jpg" alt="UNES Simracers AMS2 Banner">
 
-    <p style="margin-top: 20px; font-size: 0.9rem;">Si no se abre automáticamente, haz clic en uno de los botones.</p>
+      <div class="button-group">
+        <a class="btn" href="steam://run/1066890//-connect 84.120.189.122:27105">Monitor</a>
+        <a class="btn" href="steam://run/1066890//-connect 84.120.189.122:27105 -forcevr">VR</a>
+      </div>
+    </div>
+
+    <footer>Si no se abre automáticamente, haz clic en un botón.</footer>
   </body>
 </html>
