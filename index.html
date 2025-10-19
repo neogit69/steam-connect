@@ -5,20 +5,20 @@
     <title>UNES Simracers | Conectar al servidor AMS2 🏁</title>
 
     <!-- ===== Open Graph (Discord / redes) ===== -->
-    <meta property="og:title" content="🐱 UNES Simracers | Conectar al servidor AMS2">
-    <meta property="og:description" content="Haz clic aquí para unirte directamente al servidor Automobilista 2 de la comunidad UNES.">
-    <meta property="og:image" content="https://github.com/neogit69/steam-connect/blob/main/unes-banner.jpg?raw=true">
+    <meta property="og:title" content="🐱 UNES Simracers | Conecta al servidor AMS2">
+    <meta property="og:description" content="Accede directamente al servidor de Automobilista 2. Elige modo monitor o VR. 🏎️">
+    <meta property="og:image" content="https://github.com/neogit69/steam-connect/blob/main/unes-banner-small.jpg?raw=true">
     <meta property="og:url" content="https://neogit69.github.io/steam-connect/">
-    <meta property="og:type" content="article">
+    <meta property="og:type" content="website">
 
-    <!-- ===== Twitter Card (ayuda a que Discord use formato grande) ===== -->
-    <meta name="twitter:card" content="summary_large_image">
+    <!-- ===== Twitter / Discord card pequeña ===== -->
+    <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="UNES Simracers | Conectar al servidor AMS2">
-    <meta name="twitter:description" content="Únete directamente al servidor de Automobilista 2. ¡Nos vemos en pista!">
-    <meta name="twitter:image" content="https://github.com/neogit69/steam-connect/blob/main/unes-banner.jpg?raw=true">
+    <meta name="twitter:description" content="Accede al servidor de Automobilista 2. Modo normal o VR disponibles.">
+    <meta name="twitter:image" content="https://github.com/neogit69/steam-connect/blob/main/unes-banner-small.jpg?raw=true">
 
-    <!-- ===== Redirección automática a Steam ===== -->
-    <meta http-equiv="refresh" content="1; url=steam://run/1066890//-connect 84.120.189.122:27105">
+    <!-- 🔁 Redirección automática (modo monitor por defecto) -->
+    <meta http-equiv="refresh" content="2; url=steam://run/1066890//-connect 84.120.189.122:27105">
 
     <style>
       body {
@@ -26,28 +26,33 @@
         background-color: #0d0d0d;
         color: #eee;
         text-align: center;
-        margin-top: 10%;
+        margin-top: 8%;
       }
       h1 {
         font-size: 1.8rem;
-        margin-bottom: 10px;
         color: #f44336;
+        margin-bottom: 0.5rem;
       }
-      a {
+      p {
+        color: #bbb;
+        margin-bottom: 1.2rem;
+      }
+      a.btn {
         display: inline-block;
         background-color: #f44336;
         color: white;
-        padding: 14px 28px;
+        padding: 12px 24px;
         border-radius: 8px;
         text-decoration: none;
         font-size: 18px;
+        margin: 6px;
         transition: background 0.3s;
       }
-      a:hover {
+      a.btn:hover {
         background-color: #c62828;
       }
       .banner-link img {
-        max-width: 80%;
+        max-width: 60%;
         border-radius: 12px;
         margin-bottom: 20px;
         box-shadow: 0 0 12px rgba(255,255,255,0.15);
@@ -55,22 +60,23 @@
         transition: transform 0.2s ease-in-out;
       }
       .banner-link img:hover {
-        transform: scale(1.02);
+        transform: scale(1.03);
       }
     </style>
   </head>
   <body>
-    <!-- 🔗 Imagen clicable -->
+    <!-- 🔗 Banner clicable -->
     <a class="banner-link" href="steam://run/1066890//-connect 84.120.189.122:27105">
-      <img src="https://github.com/neogit69/steam-connect/blob/main/unes-banner.jpg?raw=true" alt="UNES Simracers AMS2 Banner">
+      <img src="https://github.com/neogit69/steam-connect/blob/main/unes-banner-small.jpg?raw=true" alt="UNES Simracers AMS2 Banner">
     </a>
 
-    <h1>🏎️ UNES Simracers</h1>
-    <p>Si no se abre automáticamente, haz clic abajo 👇</p>
-    <a href="steam://run/1066890//-connect 84.120.189.122:27105">Conectar al servidor</a>
+    <h1>🏁 UNES Simracers</h1>
+    <p>Selecciona tu modo de conexión:</p>
+
+    <!-- 🔘 Enlaces de acceso -->
+    <a class="btn" href="steam://run/1066890//-connect 84.120.189.122:27105">Modo Monitor</a>
+    <a class="btn" href="steam://run/1066890//-connect 84.120.189.122:27105 -forcevr">Modo VR (Gafas)</a>
+
+    <p style="margin-top: 20px; font-size: 0.9rem;">Si no se abre automáticamente, haz clic en uno de los botones.</p>
   </body>
 </html>
-
-
-
-
