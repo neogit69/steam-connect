@@ -1,0 +1,532 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Normas del Servidor AMS2 • UNES / Liga Mixta</title>
+  <meta name="description" content="Normas del servidor AMS2: Safety Rating (SR), requisitos para carrera, expulsiones, sistema de puntos mensual y comandos útiles." />
+  <style>
+    :root{
+      --bg: #0b1020;
+      --card: rgba(255,255,255,.06);
+      --card2: rgba(255,255,255,.09);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.72);
+      --soft: rgba(255,255,255,.14);
+      --accent: #7c5cff;
+      --accent2:#36d6ff;
+      --good:#31e981;
+      --warn:#ffcc66;
+      --bad:#ff5c7a;
+      --shadow: 0 12px 40px rgba(0,0,0,.45);
+      --radius: 18px;
+      --radius2: 12px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      --maxw: 1100px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: var(--sans);
+      color:var(--text);
+      background:
+        radial-gradient(1200px 600px at 15% 10%, rgba(124,92,255,.25), transparent 55%),
+        radial-gradient(900px 500px at 85% 20%, rgba(54,214,255,.18), transparent 60%),
+        radial-gradient(700px 450px at 55% 95%, rgba(49,233,129,.10), transparent 60%),
+        linear-gradient(180deg, #070a14, var(--bg));
+      line-height:1.55;
+    }
+    a{color:inherit}
+    .wrap{max-width:var(--maxw); margin:0 auto; padding:28px 18px 80px}
+    header{
+      position:relative;
+      padding:26px 22px;
+      border:1px solid var(--soft);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    header:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(600px 300px at 10% 0%, rgba(124,92,255,.25), transparent 55%),
+        radial-gradient(500px 280px at 90% 0%, rgba(54,214,255,.20), transparent 60%),
+        linear-gradient(90deg, rgba(255,255,255,.10), transparent 60%);
+      opacity:.9;
+      pointer-events:none;
+      filter: blur(0px);
+    }
+    header > *{position:relative}
+    .kicker{
+      display:inline-flex; gap:10px; align-items:center;
+      font-size:13px; letter-spacing:.12em;
+      text-transform:uppercase;
+      color:var(--muted);
+      padding:8px 12px;
+      border:1px solid var(--soft);
+      border-radius:999px;
+      background:rgba(0,0,0,.20);
+      backdrop-filter: blur(6px);
+    }
+    .dot{
+      width:9px; height:9px; border-radius:50%;
+      background: linear-gradient(180deg, var(--accent2), var(--accent));
+      box-shadow: 0 0 20px rgba(124,92,255,.45);
+    }
+    h1{
+      margin:14px 0 8px;
+      font-size: clamp(28px, 3.2vw, 44px);
+      line-height:1.12;
+      letter-spacing:-.02em;
+    }
+    .sub{
+      margin:0;
+      max-width: 72ch;
+      color: var(--muted);
+      font-size: 16px;
+    }
+    .meta{
+      margin-top:18px;
+      display:flex; flex-wrap:wrap; gap:10px;
+    }
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:9px 12px;
+      border:1px solid var(--soft);
+      border-radius: 999px;
+      background: rgba(0,0,0,.18);
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .pill b{color:var(--text); font-weight:600}
+    main{margin-top:22px; display:grid; grid-template-columns: 1.15fr .85fr; gap:16px}
+    @media (max-width: 980px){ main{grid-template-columns:1fr} }
+    section{
+      border:1px solid var(--soft);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.05);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .sec-h{
+      padding:16px 18px;
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border-bottom: 1px solid var(--soft);
+      display:flex; justify-content:space-between; align-items:center; gap:12px;
+    }
+    .sec-h h2{
+      margin:0;
+      font-size: 18px;
+      letter-spacing:-.01em;
+    }
+    .tag{
+      font-size:12px;
+      color: var(--muted);
+      border:1px solid var(--soft);
+      padding:6px 10px;
+      border-radius:999px;
+      background: rgba(0,0,0,.18);
+      white-space:nowrap;
+    }
+    .sec-b{padding:16px 18px}
+    p{margin:0 0 10px}
+    ul{margin: 8px 0 0 18px; color: var(--muted)}
+    li{margin: 6px 0}
+    .grid{
+      display:grid; grid-template-columns:1fr 1fr; gap:12px;
+    }
+    @media (max-width: 700px){ .grid{grid-template-columns:1fr} }
+    .callout{
+      border:1px solid var(--soft);
+      background: rgba(0,0,0,.18);
+      border-radius: var(--radius2);
+      padding:12px 12px;
+      color: var(--muted);
+    }
+    .callout strong{color:var(--text)}
+    .callout.good{border-color: rgba(49,233,129,.25); background: rgba(49,233,129,.06)}
+    .callout.warn{border-color: rgba(255,204,102,.28); background: rgba(255,204,102,.06)}
+    .callout.bad{border-color: rgba(255,92,122,.28); background: rgba(255,92,122,.06)}
+    .code{
+      font-family: var(--mono);
+      font-size: 13px;
+      padding: 2px 8px;
+      border-radius: 8px;
+      border: 1px solid var(--soft);
+      background: rgba(0,0,0,.25);
+      color: rgba(255,255,255,.86);
+      display:inline-block;
+    }
+    table{
+      width:100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      overflow:hidden;
+      border:1px solid var(--soft);
+      border-radius: var(--radius2);
+      background: rgba(0,0,0,.18);
+    }
+    th,td{
+      padding:10px 10px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      text-align:left;
+      font-size:14px;
+    }
+    th{color: rgba(255,255,255,.86); background: rgba(255,255,255,.05)}
+    td{color: var(--muted)}
+    tr:last-child td{border-bottom:0}
+    .rightcol section{position:sticky; top:16px}
+    @media (max-width: 980px){ .rightcol section{position:static} }
+    footer{
+      margin-top:18px;
+      color: var(--muted);
+      font-size: 13px;
+      text-align:center;
+      opacity:.9;
+    }
+    .hr{
+      height:1px;
+      background: rgba(255,255,255,.10);
+      margin: 14px 0;
+    }
+    .mini{
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      font-size: 13px;
+      color: rgba(255,255,255,.86);
+      border:1px solid var(--soft);
+      background: rgba(0,0,0,.18);
+      padding:8px 10px;
+      border-radius: 12px;
+    }
+    .badge .b{width:10px; height:10px; border-radius:50%}
+    .b.good{background: var(--good)}
+    .b.warn{background: var(--warn)}
+    .b.bad{background: var(--bad)}
+    .muted{color:var(--muted)}
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <div class="kicker"><span class="dot"></span> Normativa oficial • AMS2 Dedicated Server</div>
+      <h1>Normas del servidor (SR, admisión a carrera y puntos mensuales)</h1>
+      <p class="sub">
+        Este servidor prioriza carreras limpias y consistentes. Tu comportamiento durante <b>Practice</b> y <b>Qualy</b>
+        determina si puedes acceder a <b>Race</b>. Además, existe un sistema de <b>puntos mensual</b> para premiar la participación.
+      </p>
+
+      <div class="meta">
+        <div class="pill">Comando de consulta: <span class="code">/normas</span></div>
+        <div class="pill">Ver tu SR: <span class="code">sr</span></div>
+        <div class="pill">Ranking mensual: <span class="code">top</span> <span class="muted">(ej. <span class="code">top 20</span>)</span></div>
+      </div>
+    </header>
+
+    <main>
+      <!-- LEFT COLUMN -->
+      <div class="leftcol">
+        <section>
+          <div class="sec-h">
+            <h2>1) Registro de vueltas y activación del SR</h2>
+            <div class="tag">Válido en Practice / Qualy / Race</div>
+          </div>
+          <div class="sec-b">
+            <p>
+              Al participar en sesiones de <b>Practice</b>, <b>Qualy</b> y <b>Race</b>, el servidor contabiliza tus vueltas.
+              Para que el <b>Safety Rating (SR)</b> empiece a computar, necesitas haber completado <b>al menos 1 vuelta</b> en el servidor
+              dentro de una sesión de <b>Practice</b> o <b>Qualy</b>.
+            </p>
+
+            <div class="callout good">
+              <strong>Resumen:</strong> sin una vuelta previa en Practice/Qualy, el SR no se inicia y no podrás cumplir requisitos de admisión a carrera.
+            </div>
+          </div>
+        </section>
+
+        <section style="margin-top:16px">
+          <div class="sec-h">
+            <h2>2) Cómo se calcula una vuelta limpia</h2>
+            <div class="tag">Incidentes / Cuts / Objetos</div>
+          </div>
+          <div class="sec-b">
+            <p class="muted">
+              En cada vuelta, el servidor evalúa si has tenido <b>incidentes</b>. Si ocurre alguno, la vuelta se marca como <b>sucia</b>.
+            </p>
+            <div class="grid" style="margin-top:10px">
+              <div class="callout">
+                <strong>Colisiones</strong>
+                <div class="mini">Impactos contra objetos del circuito u otros coches.</div>
+              </div>
+              <div class="callout">
+                <strong>Cortes de pista (cut track)</strong>
+                <div class="mini">
+                  Se detectan según parámetros internos (por ejemplo, si el corte te permite <b>ahorrar tiempo</b> de vuelta).
+                </div>
+              </div>
+            </div>
+
+            <div class="hr"></div>
+
+            <p>
+              Conforme das vueltas, se mantienen dos contadores:
+              <b>vueltas limpias</b> y <b>vueltas totales</b>.
+              Tu <b>SR</b> es el porcentaje de limpias sobre totales:
+            </p>
+
+            <div class="callout good">
+              <strong>Fórmula:</strong>
+              <span class="code">SR = (vueltas_limpias / vueltas_totales) × 100</span>
+            </div>
+
+            <div class="hr"></div>
+
+            <p><b>Ejemplos de SR:</b></p>
+            <table aria-label="Ejemplos SR">
+              <thead>
+                <tr>
+                  <th>Vueltas limpias</th>
+                  <th>Vueltas totales</th>
+                  <th>SR</th>
+                  <th>Interpretación</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>5</td>
+                  <td>10</td>
+                  <td>50%</td>
+                  <td>Justo en el mínimo típico</td>
+                </tr>
+                <tr>
+                  <td>9</td>
+                  <td>12</td>
+                  <td>75%</td>
+                  <td>Buen comportamiento general</td>
+                </tr>
+                <tr>
+                  <td>12</td>
+                  <td>20</td>
+                  <td>60%</td>
+                  <td>Válido, pero mejorable</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>8</td>
+                  <td>25%</td>
+                  <td>Insuficiente para Race</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section style="margin-top:16px">
+          <div class="sec-h">
+            <h2>3) Requisitos para acceder a la fase RACE</h2>
+            <div class="tag">Filtro de admisión</div>
+          </div>
+          <div class="sec-b">
+            <p>
+              Para ser admitido en <b>Race</b> debes cumplir <b>todos</b> los requisitos exigidos en la fase previa de clasificación
+              (Practice/Qualy, según la ronda):
+            </p>
+
+            <ul>
+              <li>
+                <b>SR mínimo</b> de <b>X</b> (por defecto suele ser <b>50</b>).  
+                <span class="muted">Ej.: SR 50 significa que al menos el 50% de tus vueltas han sido limpias.</span>
+              </li>
+              <li>
+                En la fase de clasificación debes completar <b>al menos 1 vuelta limpia</b>.
+              </li>
+              <li>
+                En esa misma fase, puedes tener como máximo <b>4 vueltas sucias</b>.
+              </li>
+            </ul>
+
+            <div class="hr"></div>
+
+            <div class="callout warn">
+              <strong>Si NO cumples los 3 requisitos:</strong> serás expulsado de la sala durante <b>2 minutos</b> y
+              <b>no podrás participar</b> en la fase de carrera de esa ronda.
+            </div>
+
+            <p style="margin-top:12px">
+              Tras esos 2 minutos podrás volver a entrar y seguir haciendo <b>Practice/Qualy</b> para mejorar tu SR y cumplir los mínimos.
+              Si entras tarde y no te da tiempo a realizar una vuelta limpia, el sistema te expulsará y tendrás que esperar a la <b>siguiente ronda</b>.
+            </p>
+
+            <div class="callout good" style="margin-top:12px">
+              <strong>Condiciones por defecto (habituales):</strong><br/>
+              SR mínimo: <b>50</b> • Vueltas limpias requeridas en Qualy: <b>1</b> • Máx. vueltas sucias: <b>4</b><br/>
+              <span class="mini">Nota: estas condiciones pueden variar. Consulta siempre <span class="code">/normas</span> para ver el estado actual.</span>
+            </div>
+          </div>
+        </section>
+
+        <section style="margin-top:16px">
+          <div class="sec-h">
+            <h2>4) Moderación: expulsión manual por admins</h2>
+            <div class="tag">Conducta / Chat / Ping</div>
+          </div>
+          <div class="sec-b">
+            <p>
+              Los admins pueden expulsar a jugadores que:
+            </p>
+            <ul>
+              <li>Se comporten de forma <b>violenta</b> o peligrosa en pista.</li>
+              <li><b>Insulten</b> o generen mal ambiente en el chat.</li>
+              <li>Tengan un <b>ping demasiado alto</b> que perjudique la experiencia del resto (aunque conduzcan limpio).</li>
+            </ul>
+
+            <div class="callout">
+              <strong>Objetivo:</strong> mantener carreras estables, justas y disfrutables para todos.
+            </div>
+          </div>
+        </section>
+
+        <section style="margin-top:16px">
+          <div class="sec-h">
+            <h2>5) Carrera: autoexpulsión experimental por impactos</h2>
+            <div class="tag">Sistema experimental</div>
+          </div>
+          <div class="sec-b">
+            <p>
+              Durante <b>Race</b> existe un mecanismo <b>experimental</b> de autoexpulsión por incidentes.
+              El servidor intenta detectar:
+            </p>
+            <ul>
+              <li><b>Impactos traseros</b> (especialmente relevantes por ser típicos de conducción agresiva).</li>
+              <li><b>Reincorporaciones peligrosas</b> a pista.</li>
+              <li><b>Impactos por obstaculización</b> (maniobras que bloquean de forma antideportiva).</li>
+            </ul>
+
+            <div class="callout bad" style="margin-top:12px">
+              <strong>Regla por defecto:</strong> al acumular <b>X impactos</b> (por defecto suele ser <b>2</b>) el jugador
+              será expulsado <b>inmediatamente</b>.
+            </div>
+
+            <p class="mini" style="margin-top:10px">
+              Nota: al ser un sistema experimental, puede fallar ocasionalmente (lo sentimos: son efectos colaterales).
+            </p>
+          </div>
+        </section>
+
+        <section style="margin-top:16px">
+          <div class="sec-h">
+            <h2>6) Sistema de puntos mensual</h2>
+            <div class="tag">Participación y rendimiento</div>
+          </div>
+          <div class="sec-b">
+            <p>
+              Cada carrera en la que participas te otorga puntos según el número de jugadores que <b>inician</b> la carrera.
+              El sistema actual es simple y competitivo:
+            </p>
+
+            <div class="callout good">
+              <strong>Puntuación base:</strong><br/>
+              Si <b>N</b> pilotos arrancan la carrera, el ganador recibe <b>N</b> puntos, el 2º recibe <b>N−1</b>, y así sucesivamente.<br/>
+              <span class="mini">El último siempre recibe <b>al menos 1 punto</b>. Lo importante: <b>finalizar</b>.</span>
+            </div>
+
+            <div class="hr"></div>
+
+            <p><b>Ejemplo de clasificación (10 pilotos inician):</b></p>
+            <table aria-label="Ejemplo puntos por posiciones">
+              <thead>
+                <tr>
+                  <th>Posición</th>
+                  <th>Puntos</th>
+                  <th>Comentario</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>1º</td><td>10</td><td>Ganador</td></tr>
+                <tr><td>2º</td><td>9</td><td></td></tr>
+                <tr><td>3º</td><td>8</td><td></td></tr>
+                <tr><td>…</td><td>…</td><td></td></tr>
+                <tr><td>10º</td><td>1</td><td>Finalizar suma</td></tr>
+              </tbody>
+            </table>
+
+            <div class="hr"></div>
+
+            <div class="grid">
+              <div class="callout">
+                <strong>Bonus</strong>
+                <ul>
+                  <li><b>+1 punto</b> por la <b>Pole</b> en Qualy</li>
+                  <li><b>+1 punto</b> por la <b>Vuelta rápida</b> en Race</li>
+                </ul>
+              </div>
+              <div class="callout">
+                <strong>Consultar ranking</strong>
+                <p class="mini" style="margin-top:6px">
+                  Escribe <span class="code">top</span> para ver los 5 primeros y tu posición/puntos al final.<br/>
+                  Para más resultados: <span class="code">top 20</span>, <span class="code">top 50</span>, etc.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- RIGHT COLUMN -->
+      <div class="rightcol">
+        <section>
+          <div class="sec-h">
+            <h2>Comandos útiles</h2>
+            <div class="tag">Chat del servidor</div>
+          </div>
+          <div class="sec-b">
+            <div class="badge"><span class="b good"></span><span><span class="code">/normas</span> • Muestra las condiciones actuales de admisión</span></div>
+            <div style="height:10px"></div>
+            <div class="badge"><span class="b warn"></span><span><span class="code">sr</span> • Tu SR + vueltas limpias/total</span></div>
+            <div style="height:10px"></div>
+            <div class="badge"><span class="b good"></span><span><span class="code">top</span> • Tabla mensual (Top 5 + tu posición)</span></div>
+            <div style="height:10px"></div>
+            <div class="badge"><span class="b good"></span><span><span class="code">top 20</span> • Ejemplo para ver más posiciones</span></div>
+
+            <div class="hr"></div>
+
+            <div class="callout warn">
+              <strong>Importante:</strong> las reglas pueden variar por evento. Antes de tomarte en serio una ronda, ejecuta <span class="code">/normas</span>.
+            </div>
+
+            <div class="hr"></div>
+
+            <div class="callout">
+              <strong>Filosofía del servidor</strong>
+              <ul>
+                <li>Practice/Qualy = <b>filtro de limpieza</b></li>
+                <li>Race = <b>solo pilotos aptos</b></li>
+                <li>Puntos = <b>premiar constancia</b></li>
+              </ul>
+            </div>
+
+            <div class="hr"></div>
+
+            <p class="mini">
+              <b>Consejo:</b> si estás justo de SR, prioriza vueltas seguras y consistentes. Un par de vueltas limpias seguidas
+              suben el porcentaje y te acercan a Race más rápido.
+            </p>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      © Servidor AMS2 • Normativa sujeta a cambios por evento • Usa <span class="code">/normas</span> para ver requisitos actuales
+    </footer>
+  </div>
+</body>
+</html>
